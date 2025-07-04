@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import Link from "next/link";
@@ -284,7 +284,7 @@ export default function Home() {
                   </div>
                   <div className="p-6">
                     <p className="text-gray-700 mb-4">
-                      This week's analysis shows a significant increase in demand for automated tax solutions, 
+                      This week&apos;s analysis shows a significant increase in demand for automated tax solutions, 
                       particularly in the e-commerce and cryptocurrency sectors. Small businesses are increasingly 
                       looking for subscription-based services that provide ongoing value rather than one-time consultations.
                     </p>
@@ -555,9 +555,9 @@ export default function Home() {
                 <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
                 </svg>
-                Today's Featured Opportunity
+                Today&apos;s Featured Opportunity
               </div>
-              <h2 className="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mb-6">See What You'll Discover Daily</h2>
+              <h2 className="text-4xl md:text-5xl font-playfair font-bold text-gray-900 mb-6">See What You&apos;ll Discover Daily</h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">Real business opportunities with detailed market analysis, revenue projections, and implementation strategies.</p>
             </div>
             

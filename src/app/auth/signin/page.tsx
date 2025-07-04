@@ -1,9 +1,10 @@
 "use client";
+import React from "react";
 import { getProviders, signIn } from "next-auth/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type FormEvent } from "react";
 
 export default function SignInPage() {
-  const [providers, setProviders] = useState<any>(null);
+  const [providers, setProviders] = useState<Record<string, unknown> | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -34,7 +35,7 @@ export default function SignInPage() {
     return true;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
@@ -57,7 +58,7 @@ export default function SignInPage() {
       } else {
         window.location.href = '/';
       }
-    } catch (error) {
+    } catch {
       setError("An error occurred. Please try again.");
     } finally {
       setLoading(false);
@@ -106,15 +107,16 @@ export default function SignInPage() {
           <span className="text-gray-400">or</span>
         </div>
         <div className="flex flex-col gap-2">
-          {providers && Object.values(providers).map((provider: any) => {
-            if (provider.id === 'credentials') return null;
+          {providers && Object.values(providers).map((provider: unknown) => {
+            const typedProvider = provider as { id: string; name: string };
+            if (typedProvider.id === 'credentials') return null;
             return (
               <button
-                key={provider.name}
+                key={typedProvider.name}
                 className="w-full border border-gray-300 py-2 rounded font-semibold hover:bg-gray-100 transition"
-                onClick={() => signIn(provider.id, { callbackUrl: '/' })}
+                onClick={() => signIn(typedProvider.id, { callbackUrl: '/' })}
               >
-                Sign in with {provider.name}
+                Sign in with {typedProvider.name}
               </button>
             );
           })}
