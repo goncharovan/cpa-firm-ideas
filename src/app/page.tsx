@@ -8,7 +8,7 @@ export default function Home() {
   const { data: session, status } = useSession();
   const [activeTab, setActiveTab] = useState("ideas");
 
-  // If user is logged in, show the dashboard
+  // Handle loading state
   if (status === "loading") {
     return (
       <div className="min-h-screen flex items-center justify-center">
