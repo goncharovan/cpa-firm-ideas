@@ -6,6 +6,22 @@ import LinkedInProvider from "next-auth/providers/linkedin"
 import bcrypt from "bcryptjs"
 import { prisma } from "./prisma"
 
+// Extend the built-in session types
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string
+      name?: string | null
+      email?: string | null
+      image?: string | null
+    }
+  }
+  
+  interface JWT {
+    id: string
+  }
+}
+
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -66,11 +82,11 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async session({ token, session }) {
-      if (token) {
-        session.user.id = token.id
-        session.user.name = token.name
-        session.user.email = token.email
-        session.user.image = token.picture
+      if (token && session.user) {
+        session.user.id = token.id as string
+        session.user.name = token.name as string | null
+        session.user.email = token.email as string | null
+        session.user.image = token.picture as string | null
       }
 
       return session
