@@ -139,7 +139,7 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">CPA Firm Ideas</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">Discover innovative business ideas and solutions for CPA firms and accounting professionals.</p>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">Discover business ideas and solutions for CPA firms and accounting consultants.</p>
           </div>
           
           <div className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 rounded-3xl p-8 md:p-12 border border-blue-100 shadow-xl">
